@@ -20,7 +20,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:3000/generate-content', {
+      const res = await fetch('https://ai-chat-assistant-nu.vercel.app/generate-content', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
