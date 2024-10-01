@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import cors from 'cors'; // Import CORS
 
 const app = express();
-const port = 3000;
+const port = 'https://ai-chat-assistant-nu.vercel.app';
 
 // Enable CORS for all routes
 app.use(cors());
