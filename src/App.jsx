@@ -20,18 +20,25 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('https://ai-chat-assistant-nu.vercel.app/generate-content', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: input }),
-      });
+      const API_KEY = 'AIzaSyB6SD8rYS-VGRJlQHepvK2iFo1ULrn82GE'; // Replace with your actual Google API key
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+      
+      const res = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: input }] }],
+      }),
+    });
 
-      const data = await res.json();
-      setConversation((prev) => [...prev, { sender: 'ai', message: data.response }]);
-    } catch (error) {
+     const data = await res.json();
+      setConversation((prev) => [...prev, { sender: 'ai', message: data?.candidates[0]?.content?.parts[0]?.text}]);
+    }
+    catch (error) {
       console.error('Error fetching content:', error);
+      setConversation((prev) => [...prev, { sender: 'ai', message: 'Error generating content.' }]);
     } finally {
       setLoading(false);
     }
@@ -104,3 +111,4 @@ const App = () => {
 }
 
 export default App;
+    
