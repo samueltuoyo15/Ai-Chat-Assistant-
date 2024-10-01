@@ -55,7 +55,7 @@ const App = () => {
   return (
     <>
       <header className="fixed top-0 w-full bg-blue-800 p-5 z-10">
-        <h1 className="text-center text-white text-2xl font-extrabold">ChatBot</h1>
+        <h1 className="text-center text-white text-2xl font-extrabold">Ai Chat Assistant 1.0</h1>
       </header>
       
       <div id="container" className="pt-16 pb-16 px-5 w-full mb-15">
@@ -93,15 +93,15 @@ const App = () => {
       </div>
 
       <footer className="p-5 fixed bottom-0 w-full">
-        <form onSubmit={handleGenerate} className="relative">
-          <input 
+        <form onSubmit={handleGenerate} className="flex justify-between">
+          <textarea
             type="text" 
             value={input} 
             onChange={(e) => setInput(e.target.value)} 
-            placeholder="New message" 
-            className="rounded-2xl relative p-5 w-full border-2 border-black" 
-          />
-          <button type="submit" className="bg-blue-800 py-4 px-4 text-xl rounded-2xl text-white absolute top-1 right-0 z-10">
+            className="rounded-2xl py-2 px-3 w-8/12 border-2 border-bg-indigo-500" >
+            </textarea>
+            
+           <button type="submit" className="bg-blue-800 py-3 px-4 text-xl rounded-2xl text-white z-10">
             Send <FaPaperPlane className="inline" />
           </button>
         </form>
@@ -111,4 +111,3 @@ const App = () => {
 }
 
 export default App;
-    
